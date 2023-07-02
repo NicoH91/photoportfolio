@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&display=swap');
+
+body {
+    margin: 0;
+    line-height: 1.5;
+    background-color: #f3f2f1;
+}
+
+$tipografia: "Raleway", Arial, Helvetica, sans-serif;
+//Mapa de colores. Revisar porque desaparece al hacer el commit-
+$font-weights: (
+regular: 500,
+medio: 600,
+bol: 700,
+
+);
+
+$colores: (
+    color-botones:  #ee00ff,
+    negro: #000,
+   
+    bgwhite : #ffffff,
+   
+
+);
+
+
+
+body,
+input,
+textarea,
+button {
+    font-family: $tipografia;
+    font-weight: 400;
+}
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+
+
+.container {
+    max-width: 1170px;
+    margin: auto;
+    
+
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.aling-items-center {
+    align-items: center;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+
+
+
+.btn-01 {
+    background-color: map-get($colores , color-botones );
+    color: map-get($colores, bgwhite );
+    border: 2px solid transparent;
+    padding: 10px 35px;
+    border-radius: 30px;
+    line-height: 1.5;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: map-get($font-weights , medio );
+    display: inline-block;
+    transition: all 0.5s ease;
+
+}
+
+.btn-01:hover {
+    background-color: transparent;
+    border-color: map-get($colores , color-botones );
+    color: map-get($colores , color-botones );
+}
+
+.btn-01:focus {
+    outline: none;
+}
+
+/* preloader */
+.preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color:map-get($colores , negro );
+    z-index: 1099;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.9s ease;
+}
+
+.preloader.loaded {
+    visibility: hidden;
+    opacity: 0;
+    z-index: -99;
+}
+
+.preloader .loader {
+    height: 30px;
+    width: 30px;
+    border: 2px solid map-get($colores , color-botones );
+    border-right: 2px solid transparent;
+    border-radius: 50%;
+    animation: ani01 2s linear infinite;
+}
+
+.header {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+    transition: all 0.5s ease;
+}
+
+.header.fixed {
+    background-color: map-get($colores, bgwhite );
+    position: fixed;
+}
+
+.header .brand-name {
+    /* background-color: red; */
+    padding: 0 15px;
+}
+
+
+
+.header .brand-name a {
+    text-decoration: none;
+    font-size: 30px;
+    color:map-get($colores, bgwhite );
+    text-transform: uppercase;
+    font-weight:900;
+    letter-spacing: 2px;
+    transition: all 0.5s ease;
+
+}
+
+.header.fixed .brand-name a {
+    color: map-get($colores , negro );
+}
+
+.header .nav-toggle {
+    width: 40px;
+    height: 34px;
+
+    border: 1px solid map-get($colores, bgwhite );
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    transition: all 0.5s ease;
+    display: none;
+}
+
+.header.fixed .nav-toggle {
+    border-color: map-get($colores , negro );
+}
+
+.header .nav-toggle span {
+    height: 1px;
+    margin: 0 auto;
+    display: block;
+    width: 16px;
+    background-color: map-get($colores, bgwhite );
+    position: relative;
+    transition: all 0.5s ease;
+}
+
+.header .nav-toggle span:before,
+.header .nav-toggle span:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 1px;
+    width: 100%;
+    background-color:map-get($colores, bgwhite );
+    transition: all 0.5s ease;
+
+}
+
+.header.fixed .nav-toggle span,
+.header.fixed .nav-toggle span:before,
+.header.fixed .nav-toggle span:after {
+    background-color:map-get($colores , negro );
+}
+
+.header .nav-toggle span:before {
+    transform: translateY(-6px);
+}
+
+.header .nav-toggle span:after {
+    transform: translateY(6px);
+}
+
+.header .nav {
+    /* background-color: grey; */
+    padding: 0 15px;
+}
+
+.header .nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.header .nav ul li {
+    display: inline-block;
+    margin-left: 30px;
+}
+
+.header .nav ul li a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: map-get($colores, bgwhite );
+    padding: 25px 0;
+    display: block;
+    transition: all 0.5s ease;
+}
+
+.header.fixed .nav ul li a {
+    color:map-get($colores , negro );
+}
+
+.header.fixed .nav ul li a:hover {
+    color:map-get($colores , color-botones );
+}
+
+.header .nav ul li a:hover {
+    color: map-get($colores , color-botones );
+}
+
+
+/* home-section */
+
+.home-section {
+    min-height: 100vh;
+    background-image: url("../img/home-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    z-index: 1;
+
+}
+
+.home-section:before {
+    content: "";
+    position: absolute;
+    box-sizing: border-box;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: map-get($colores , negro );
+    opacity: 0.7;
+    z-index: -1;
+
+}
+
+/* buscar como hacer una huellita  */
+.home-section .shape-01 {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    border: 2px solid map-get($colores , color-botones );
+    right: 5%;
+    top: 20%;
+    animation: ani01 5s linear infinite;
+}
+
+.home-section .row {
+    min-height: 100vh;
+}
+
+.home-section .home-content {
+    /* background-color: red; */
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: center;
+}
+
+.home-section .home-content h4 {
+    font-size: 20px;
+    color: map-get($colores, bgwhite );
+    margin: 0;
+}
+
+.home-section .home-content h1 {
+    font-size: 60px;
+    margin: 0;
+    color: map-get($colores, bgwhite );
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 10px;
+}
+
+.home-section .scroll-down {
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    height: 30px;
+    width: 30px;
+    margin-left: -15px;
+    animation: scrollDown 2s ease infinite;
+}
